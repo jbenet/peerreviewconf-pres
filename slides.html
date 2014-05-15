@@ -100,14 +100,18 @@
         border: none;
       }
 
+      .splash img{
+        width:100%
+      }
+
     </style>
   </head>
   <body>
     <textarea id="source">
 
-class: center, middle
+class: center, middle, splash
 
-<img src="img/dat.png" width="100%" />
+![](img/dat.png)
 
 ---
 
@@ -140,9 +144,9 @@ class: center, middle
 </div>
 
 ---
-class: center, middle
+class: center, middle, splash
 
-<img src="http://www.knightfoundation.org/media/uploads/project_rotator_images/max-640.jpg.640x360_q85_crop.jpg" />
+![](http://www.knightfoundation.org/media/uploads/project_rotator_images/max-640.jpg.640x360_q85_crop.jpg)
 
 ---
 class: center, middle
@@ -217,9 +221,10 @@ class: unix-tools
 <img src="img/transformer.png" style="width: 60%;" />
 
 ---
-class: middle, center
+class: middle, center, splash
 
-<img src="img/npm.png" />
+
+![](img/npm.png)
 
 
 ---
@@ -245,6 +250,40 @@ class: middle, center
 - .orange[git : code :: dat : data]
 
 <iframe width="560" height="315" src="//www.youtube.com/embed/tP_6N7mMKok?t=9" frameborder="0" allowfullscreen></iframe>
+
+---
+class: center, middle, splash
+
+![](img/workflow-centralized.png)
+
+
+---
+class: center, middle, splash
+
+![](img/workflow-centralized-bad.png)
+
+
+---
+class: center, middle, splash
+
+![](img/workflow-distributed.png)
+
+---
+
+
+# .light[tools:] dat distributed workflow
+
+- distributed / federated
+- workflow similar to git
+- push and pull
+- and it's fast. really fast
+- .green[designed build services on top of it]
+
+---
+
+# .light[tools:] dat
+
+# .orange[demo]
 
 ---
 
@@ -343,17 +382,41 @@ Published to datadex.io/jbenet/cifar.numpy
 
 ---
 
-## .light[tools:] dat-annotate ?
+# .light[tools:] annotation-dat ?
 
-- versioned annotations
+
+## annotation backend
+
+- store annotations (they're data!)
+- versioned + distributed workflow
+- fits use cases I've heard today really well!
+
+---
+
+# .light[tools:] dat-annotate ?
+
+## annotation frontend
+
 - annotate other datasets
 - visualize annotations
 
 <img src="img/anno-colors.png" style="width: 48%;" />
 <img src="img/anno-comment.png" style="width: 48%;" />
 
+---
 
+# Contribute!
 
+- developer preview available now
+- `#dat` on freenode irc
+- browse github issues
+- comment, leave a use case
+- github.com/maxogden/dat
+
+---
+class: middle, center
+
+# Thanks! I'm @juanbenet
 
     </textarea>
     <script src="http://gnab.github.io/remark/downloads/remark-latest.min.js" type="text/javascript">
