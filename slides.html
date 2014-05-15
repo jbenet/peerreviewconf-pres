@@ -7,6 +7,15 @@
       @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
       @import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
       @import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+      @import url()
+
+      @font-face{
+        font-family:'Transformers';
+        src:url('font/transformers.eot') format('embedded-opentype'),
+            url('font/transformers.woff') format('woff'),
+            url('font/transformers.ttf') format('truetype'),
+            url('font/transformers.svg') format('svg');
+      }
 
       body {
         font-family: 'Droid Serif';
@@ -68,6 +77,25 @@
         padding: 10px;
       }
 
+      .sponsors img {
+        width: 40%;
+        display: inline;
+        margin: 10px;
+      }
+
+      .transformers {
+        font-family: "Transformers";
+        text-transform: uppercase;
+        font-style: italic;
+        color: #cc0000;
+      }
+
+      .unix-tools img {
+        display: inline;
+        margin: 10px;
+        opacity: 0.5;
+      }
+
     </style>
   </head>
   <body>
@@ -95,10 +123,12 @@ class: center, middle
 <div style="padding-left: 100px;">
 
 .middle[
-- consume
+- find
+- download
+- use
 - store
+- modify
 - version
-- manipulate
 - publish
 - annotate
 ]
@@ -108,11 +138,26 @@ class: center, middle
 ---
 class: center, middle
 
+<img src="http://www.knightfoundation.org/media/uploads/project_rotator_images/max-640.jpg.640x360_q85_crop.jpg" />
+
+---
+class: center, middle
+
 <img src="img/dat-team.png" width="100%" />
 
 .small[[(dat-data.com/team.html)](http://dat-data.com/team.html)]
 
 ---
+class: center, middle, sponsors
+
+# .light[Sponsored and Supported by]
+
+<img src="img/knight.png" style="width: 40%;" />
+<img src="img/sloan.png" style="width: 50%;" />
+<img src="img/usodi.png" style="width: 55%;" />
+
+
+---
 
 # What's Dat?
 
@@ -122,7 +167,7 @@ class: center, middle
 
 ## dat tool
 
-open source tool for sharing and versioning large tabular* datasets
+open source tool for sharing and versioning large datasets
 
 ---
 
@@ -130,27 +175,95 @@ open source tool for sharing and versioning large tabular* datasets
 
 ## dat tool
 
-open source tool for sharing and versioning large tabular* datasets
+open source tool for sharing and versioning large datasets
 
 ## Dat Project
 
 open source tools that enable collaboration on large datasets
 
 ---
+class: middle, center
 
-.center[![](http://maxogden.github.io/slides/okcon/dat-ecosystem.png)]
+![](http://maxogden.github.io/slides/okcon/dat-ecosystem.png)
+
+---
+class: unix-tools
+
+# .light[tools:] unix style
+
+.green[
+- small pieces, loosely joined
+- do one thing well
+- pipes, streams
+]
+
+---
+class: unix-tools
+
+# .light[tools:] unix style
+
+.green[
+- small pieces, loosely joined
+- do one thing well
+- pipes, streams
+]
+
+<img src="img/dat.png" style="width: 60%;" />
+<img src="img/data-package.png" style="width: 30%;" />
+<img src="img/transformer.png" style="width: 60%;" />
+
+---
+class: middle, center
+
+<img src="img/npm.png" />
+
 
 ---
 
 # .light[tools:] dat
 
 - low level utility for versioning and syncing datasets
+- millions or billions of rows*
 - distributed, push and pull
-- versioning of updates
+- be fast!
 - .green[designed to be built upon]
-- git : code :: dat : data
+- .orange[git : code :: dat : data]
 
 <iframe width="560" height="315" src="//www.youtube.com/embed/tP_6N7mMKok?t=9" frameborder="0" allowfullscreen></iframe>
+
+---
+
+# .light[tools:] .transformers[transformer]
+
+
+
+- universal data conversion
+- module library of types + conversions
+- .red[`convert('from_any_format', 'to_any_format')`]
+- like unix pipes
+
+```
+> cat addresses.csv
+1150 Masonic Ave, San Francisco, CA
+498 Walsh Rd, Atheton, CA
+101 University Ave, Palo Alto, CA
+...
+
+> cat addresses.csv | transform us-street-address us-zipcode > zipcodes.csv
+94117
+94027
+94303
+...
+```
+
+```
+> dat cat 'address' | transform us-street-address us-zipcode | dat import
+
+> dat transform address -- us-street-address us-zipcode
+```
+
+.small[([transform.datadex.io/](http://transform.datadex.io/))]
+
 
 ---
 
@@ -160,14 +273,18 @@ open source tools that enable collaboration on large datasets
 - explore the data
 - run visualizations
 - manipulate the data - js console
-- .red[data annotations]
+- .green[data annotations]
 
 .small[([oaklandcrime.dathub.org](http://oaklandcrime.dathub.org))]
 <iframe src="http://oaklandcrime.dathub.org/" width="100%" height="60%"></iframe>
 
 ---
+# .light[tools: dat web ui] plugins!
 
-mapbox
+- transformer
+- mapbox editor
+- d3 visualizations
+- .green[annotations!]
 
 ---
 
@@ -176,8 +293,8 @@ mapbox
 - dataset package manager / registry / index
 - incentivize data publishing + reduce friction
 - linked data: package.jsonld
-- .red[research data repository]
-- npm : code :: datadex : data
+- .green[data repository - permanent*]
+- .orange[npm : code :: datadex : data]
 
 ```
 > datadex get cifar
@@ -193,18 +310,17 @@ mapbox
 
 ---
 
-## .light[tools:] transformer
+## .light[tools:] dat-annotate ?
 
-- universal data conversion
-- module library of types + conversions
-- convert(`from_any_format`, `to_any_format`)
+- versioned annotations
+- annotate other datasets
+- visualize annotations
 
-.small[([transform.datadex.io/](http://transform.datadex.io/))]
-<iframe src="http://transform.datadex.io/" width="100%" height="70%"></iframe>
+<img src="img/anno-colors.png" style="width: 48%;" />
+<img src="img/anno-comment.png" style="width: 48%;" />
 
----
 
-## Data Annotations
+
 
     </textarea>
     <script src="http://gnab.github.io/remark/downloads/remark-latest.min.js" type="text/javascript">
