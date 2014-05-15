@@ -96,6 +96,10 @@
         opacity: 0.5;
       }
 
+      iframe {
+        border: none;
+      }
+
     </style>
   </head>
   <body>
@@ -229,18 +233,39 @@ class: middle, center
 - .green[designed to be built upon]
 - .orange[git : code :: dat : data]
 
+---
+
+# .light[tools:] dat
+
+- low level utility for versioning and syncing datasets
+- millions or billions of rows*
+- distributed, push and pull
+- be fast!
+- .green[designed to be built upon]
+- .orange[git : code :: dat : data]
+
 <iframe width="560" height="315" src="//www.youtube.com/embed/tP_6N7mMKok?t=9" frameborder="0" allowfullscreen></iframe>
 
 ---
 
 # .light[tools:] .transformers[transformer]
 
+- universal data conversion
+- module library of types + conversions
+- .red[`convert('from_any_format', 'to_any_format')`]
+- unix pipes
 
+
+<img src="img/transformer.gif" style="position: absolute; right: 0px; bottom: 20px; opacity: 0.2; width: 20%;" />
+
+---
+
+# .light[tools:] .transformers[transformer]
 
 - universal data conversion
 - module library of types + conversions
 - .red[`convert('from_any_format', 'to_any_format')`]
-- like unix pipes
+- unix pipes
 
 ```
 > cat addresses.csv
@@ -273,13 +298,12 @@ class: middle, center
 - explore the data
 - run visualizations
 - manipulate the data - js console
-- .green[data annotations]
 
 .small[([oaklandcrime.dathub.org](http://oaklandcrime.dathub.org))]
 <iframe src="http://oaklandcrime.dathub.org/" width="100%" height="60%"></iframe>
 
 ---
-# .light[tools: dat web ui] plugins!
+# .light[tools: dat web ui] modules!
 
 - transformer
 - mapbox editor
@@ -297,11 +321,20 @@ class: middle, center
 - .orange[npm : code :: datadex : data]
 
 ```
-> datadex get cifar
-> datadex publish
+> datadex get cifar.matlab
+...
+Downloaded datadex.io/ghinton/cifar.numpy
+
+> cd cifar
+> cat data.mat | transform matlab numpy > data.npy
+> rm data.mat
+> datadex publish cifar-matlab
+...
+Published to datadex.io/jbenet/cifar.numpy
 ```
 
-.center[![](http://jbenet.static.s3.amazonaws.com/51cd6a8/data-flap.png)]
+
+<img src="http://jbenet.static.s3.amazonaws.com/51cd6a8/data-flap.png" style="position: absolute; bottom: 0px; right: 0px; width: 30%; opacity: 0.5;" />
 
 ---
 
